@@ -1,0 +1,2 @@
+vm2;kat1;10;16;0;disk2-disk3;3-4
+vm1;kat1;10;16;0;disk1;1-2

@@ -1,0 +1,5 @@
+email2@gmail.com;b;ime;prezime;org1;admin
+email4@gmail.com;d;ime;prezime;org2;admin
+email@gmail.com;a;ime;prezime;org;super
+email5@gmail.com;e;ime;prezime;org2;user
+email3@gmail.com;c;ime;prezime;org1;user

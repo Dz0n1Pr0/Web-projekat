@@ -1,0 +1,3 @@
+disk3;SSD;vm2;150
+disk1;HBB;vm1;100
+disk2;tip;vm2;100
