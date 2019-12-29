@@ -59,7 +59,7 @@ public class PrikazOrgDetaljiAdmin extends HttpServlet {
 			out.println("	<a href=MesecniRacun>Mesecni racun</a>");
 			out.println("	<a href=Logout>Log out</a>");
 			out.println("</div>");
-			out.println("<div class=\"ostalo\">");
+			out.println("<div class=\"ostalo2\">");
 							
 			out.println("	<form action=PrikazOrgDetaljiAdminKraj>");
 			out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.organizacije.get(k.korisnik.getOrganizacija()).getIme()+"\"");

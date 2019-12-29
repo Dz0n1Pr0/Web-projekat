@@ -57,7 +57,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 				dodaj = false;
 			}
 			
-			if(!dk.getIme().toLowerCase().contains(request.getParameter("ime").toLowerCase()))
+			if(!request.getParameter("ime").equals("") && !dk.getIme().toLowerCase().contains(request.getParameter("ime").toLowerCase()))
 				dodaj= false;
 			
 			if(dodaj)
@@ -109,7 +109,9 @@ public class PrikazDiskAdmin extends HttpServlet {
 				out.println("		</tr>");
 									}}
 				out.println("	</table>");
-				
+
+				out.println("</div>");
+				out.println("<div class=\"ostalo2\">");
 				out.println("	<form action=PrikazDiskAdmin>");
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 				out.println("		<p>Kapacitet: </p><input type=\"text\" name=\"kapacitetOd\" /> - <input type=\"text\" name=\"kapacitetDo\" />");

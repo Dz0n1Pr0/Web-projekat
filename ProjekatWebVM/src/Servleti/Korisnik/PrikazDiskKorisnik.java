@@ -108,7 +108,9 @@ public class PrikazDiskKorisnik extends HttpServlet {
 				out.println("		</tr>");
 									}}
 				out.println("	</table>");
-				
+
+				out.println("</div>");
+				out.println("<div class=\"ostalo2\">");
 				out.println("	<form action=PrikazDiskKorisnik>");
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 				out.println("		<p>Kapacitet: </p><input type=\"text\" name=\"kapacitetOd\" /> - <input type=\"text\" name=\"kapacitetDo\" />");
@@ -168,7 +170,9 @@ public class PrikazDiskKorisnik extends HttpServlet {
 			out.println("		</tr>");
 								}}
 			out.println("	</table>");
-			
+
+			out.println("</div>");
+			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=PrikazDiskKorisnik>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 			out.println("		<p>Kapacitet: </p><input type=\"text\" name=\"kapacitetOd\" /> - <input type=\"text\" name=\"kapacitetDo\" />");

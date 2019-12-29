@@ -64,7 +64,7 @@ public class PrikazKatDetalji extends HttpServlet {
 
 		out.println("	<a href=Logout>Log out</a>");
 		out.println("</div>");
-		out.println("<div class=\"ostalo\">");
+		out.println("<div class=\"ostalo2\">");
 		out.println("	<form action=PrikazKatDetaljiKraj>");
 		out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.kategorije.get(request.getParameter("ime")).getIme()+"\"/>");
 		out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.kategorije.get(request.getParameter("ime")).getIme()+"\"/>");

@@ -135,7 +135,9 @@ public class PrikazVMDetaljiSuperKraj extends HttpServlet {
 				out.println("		</tr>");
 									}
 				out.println("	</table>");
-				
+
+				out.println("</div>");
+				out.println("<div class=\"ostalo2\">");
 				out.println("	<form action=PrikazVMSuper>");
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 				out.println("		<p>Organizacija: </p><input type=\"text\" name=\"org\" />");
@@ -177,7 +179,7 @@ public class PrikazVMDetaljiSuperKraj extends HttpServlet {
 
 			out.println("	<a href=Logout>Log out</a>");
 			out.println("</div>");
-			out.println("<div class=\"ostalo\">");
+			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=PrikazVMDetaljiSuperKraj>");
 			out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.virtualne_masine.get(request.getParameter("ime")).getIme()+"\"");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.virtualne_masine.get(request.getParameter("ime")).getIme()+"\"/>");

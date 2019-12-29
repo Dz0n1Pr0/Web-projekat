@@ -99,7 +99,9 @@ public class ObrisiVMAdmin extends HttpServlet {
 							
 
 		out.println("	<a href=\"DodajVMAdmin\">Dodaj virtualnu masinu</a>");
-		
+
+		out.println("</div>");
+		out.println("<div class=\"ostalo2\">");
 		out.println("	<form action=PrikazVMAdmin>");
 		out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 		out.println("		<p>Organizacija: </p><input type=\"text\" name=\"org\" />");

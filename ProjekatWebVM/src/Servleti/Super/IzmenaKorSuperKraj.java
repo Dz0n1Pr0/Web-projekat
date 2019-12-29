@@ -121,7 +121,7 @@ public class IzmenaKorSuperKraj extends HttpServlet {
 
 				out.println("	<a href=Logout>Log out</a>");
 				out.println("</div>");
-				out.println("<div class=\"ostalo\">");
+				out.println("<div class=\"ostalo2\">");
 				out.println("	<form action=IzmenaKorSuperKraj>");
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.korisnik.getIme()+"\"/>");
 				out.println("		<p>Prezime: </p><input type=\"text\" name=\"prezime\" value=\""+k.korisnik.getPrezime()+"\"/>");

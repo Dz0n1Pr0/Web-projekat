@@ -64,7 +64,7 @@ public class DodajVMSuper extends HttpServlet {
 
 		out.println("	<a href=Logout>Log out</a>");
 		out.println("</div>");
-		out.println("<div class=\"ostalo\">");
+		out.println("<div class=\"ostalo2\">");
 		out.println("	<form action=DodajVMSuperKraj>");
 		out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\"/>");
 

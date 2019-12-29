@@ -103,9 +103,10 @@ public class PromeniVMAktivnost extends HttpServlet {
 					}}}
 		out.println("	</table>");
 							
-
 		out.println("	<a href=\"DodajVMAdmin\">Dodaj virtualnu masinu</a>");
-		
+
+		out.println("</div>");
+		out.println("<div class=\"ostalo2\">");
 		out.println("	<form action=PrikazVMAdmin>");
 		out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 		out.println("		<p>Broj jezgara: </p><input type=\"text\" name=\"jezgraOd\" /> - <input type=\"text\" name=\"jezgraDo\" />");

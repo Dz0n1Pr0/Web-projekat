@@ -60,11 +60,11 @@ public class PrikazVMSuper extends HttpServlet {
 				}
 			}
 			
-			if(!vm.getIme().toLowerCase().contains(request.getParameter("ime").toLowerCase()) && !request.getParameter("ime").equals(""))
+			if(!request.getParameter("ime").equals("") && !vm.getIme().toLowerCase().contains(request.getParameter("ime").toLowerCase()))
 				dodaj= false;
 			
 
-			if(k.organizacije.get(request.getParameter("org")).getResursi().contains(request.getParameter("ime")) && !request.getParameter("org").equals(""))
+			if(!request.getParameter("org").equals("") && k.organizacije.get(request.getParameter("org")).getResursi().contains(request.getParameter("ime")))
 				dodaj= false;
 			
 			if(dodaj)
@@ -120,7 +120,9 @@ public class PrikazVMSuper extends HttpServlet {
 				out.println("	</table>");
 
 				out.println("	<a href=\"DodajVMSuper\">Dodaj virtualnu masinu</a>");
-				
+
+				out.println("</div>");
+				out.println("<div class=\"ostalo2\">");
 				out.println("	<form action=PrikazVMSuper>");
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 				out.println("		<p>Organizacija: </p><input type=\"text\" name=\"org\" />");

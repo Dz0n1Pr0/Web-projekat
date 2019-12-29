@@ -142,7 +142,9 @@ public class DodajVMAdminKraj extends HttpServlet {
 								
 
 			out.println("	<a href=\"DodajVMSuper\">Dodaj virtualnu masinu</a>");
-			
+
+			out.println("</div>");
+			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=PrikazVMSuper>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 			out.println("		<p>Organizacija: </p><input type=\"text\" name=\"org\" />");
@@ -183,7 +185,7 @@ public class DodajVMAdminKraj extends HttpServlet {
 			out.println("	<a href=MesecniRacun>Mesecni racun</a>");
 			out.println("	<a href=Logout>Log out</a>");
 			out.println("</div>");
-			out.println("<div class=\"ostalo\">");
+			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=DodajVMAdminKraj>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\"/>");
 							if(!imeBul)

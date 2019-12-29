@@ -136,7 +136,9 @@ public class PrikazDiskDetaljiSuperKraj extends HttpServlet {
 			out.println("		</tr>");
 								}
 			out.println("	</table>");
-			
+
+			out.println("</div>");
+			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=PrikazDiskSuper>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 			out.println("		<p>Kapacitet: </p><input type=\"text\" name=\"kapacitetOd\" /> - <input type=\"text\" name=\"kapacitetDo\" />");
@@ -180,7 +182,7 @@ public class PrikazDiskDetaljiSuperKraj extends HttpServlet {
 
 			out.println("	<a href=Logout>Log out</a>");
 			out.println("</div>");
-			out.println("<div class=\"ostalo\">");
+			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=PrikazDiskDetaljiSuperKraj>");
 			out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.diskovi.get(request.getParameter("ime")).getIme()+"\"");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.diskovi.get(request.getParameter("ime")).getIme()+"\"/>");

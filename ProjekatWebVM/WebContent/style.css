@@ -1,5 +1,5 @@
 body {
-  background-image: url("airplane.png");
+  background-image: url("vm.png");
   background-repeat: x-repeat;
   background-position: right top;
   background-size: cover;
@@ -17,12 +17,12 @@ body {
 }
 
 .ostalo{
-	padding-left:48%;
+	padding-left:25%;
 	padding-top:10%;
 }
 
 .ostalo2{
-	padding-left:28%;
+	padding-left:40%;
 	padding-top:10%;
 }
 

@@ -177,7 +177,9 @@ public class MesecniRacun extends HttpServlet {
 				out.println("			<td>"+konacno+"</td>");
 				out.println("		</tr>");
 				out.println("	</table>");
-				
+
+				out.println("</div>");
+				out.println("<div class=\"ostalo2\">");
 				out.println("	<form action=MesecniRacun>");
 				out.println("		<p>Datum od: </p><input type=\"text\" name=\"datumOd\" />");
 				out.println("		<p>Datum do: </p><input type=\"text\" name=\"datumDo\" />");
@@ -217,7 +219,7 @@ public class MesecniRacun extends HttpServlet {
 			out.println("	<a href=MesecniRacun>Mesecni racun</a>");
 			out.println("	<a href=Logout>Log out</a>");
 			out.println("</div>");
-			out.println("<div class=\"ostalo\">");
+			out.println("<div class=\"ostalo2\">");
 			
 			out.println("	<form action=MesecniRacun>");
 			out.println("		<p>Datum od: </p><input type=\"text\" name=\"datumOd\" />");

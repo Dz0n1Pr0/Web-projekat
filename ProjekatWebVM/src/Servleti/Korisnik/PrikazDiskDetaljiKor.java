@@ -58,7 +58,7 @@ public class PrikazDiskDetaljiKor extends HttpServlet {
 		out.println("	<a href=Logout>Log out</a>");
 
 		out.println("</div>");
-		out.println("<div class=\"ostalo\">");
+		out.println("<div class=\"ostalo2\">");
 		
 		out.println("		<p>Ime:"+k.diskovi.get(request.getParameter("ime")).getIme()+"</p>");
 		out.println("		<p>Tip:"+k.diskovi.get(request.getParameter("ime")).getTip()+"</p>");
