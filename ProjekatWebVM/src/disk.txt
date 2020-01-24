@@ -1,3 +1,0 @@
-disk1;tip;vm1;100
-disk2;tip;vm2;100
-disk3;tip;vm2;150

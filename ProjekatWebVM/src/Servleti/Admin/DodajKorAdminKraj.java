@@ -2,6 +2,7 @@ package Servleti.Admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,9 +38,24 @@ public class DodajKorAdminKraj extends HttpServlet {
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 			
 		
-		Boolean passed = true, emailBul = true;
+		Boolean passed = true, emailBul = true, imeBul = true, prezimeBul = true, passBul = true;
 
-		if(k.korisnici.containsKey(request.getParameter("email")) || !request.getParameter("email").contains("@")){
+		if(request.getParameter("ime").equals("")){
+			imeBul = false;
+			passed = false;
+		}
+		
+		if(request.getParameter("pass").equals("")){
+			passed = false;
+			passBul = false;
+		}
+		
+		if(request.getParameter("prezime").equals("")){
+			passed = false;
+			prezimeBul = false;
+		}
+		
+		if(k.korisnici.containsKey(request.getParameter("email")) || !isValid(request.getParameter("email"))){
 			passed = false;
 			emailBul = false;
 			
@@ -55,7 +71,7 @@ public class DodajKorAdminKraj extends HttpServlet {
 				kor.setPass(request.getParameter("pass"));
 				
 				k.korisnici.put(kor.getEmail(), kor);
-				k.organizacije.get(request.getParameter("org")).getKorisnici().add(kor.getEmail());
+				k.organizacije.get(k.korisnik.getOrganizacija()).getKorisnici().add(kor.getEmail());
 				
 				k.UpisFajl();
 			
@@ -71,7 +87,7 @@ public class DodajKorAdminKraj extends HttpServlet {
 					out.println("<div class=\"glava\">");
 					out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 					out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-					out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+					out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 					out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 					out.println("	<br>");
 					out.println("</div>");
@@ -121,23 +137,36 @@ public class DodajKorAdminKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkovi\">");
-			out.println("	<a href=IzmenaKor>Izmeni Profil</a>");
+			out.println("<div class=\"linkoviA\">");
+			out.println("	<a href=PrikazOrgDetaljiAdmin>Prikaz organizacije</a>");
+			out.println("	<a href=PrikazKorAdmin>Prikaz korisnika organizacije</a>");
+			out.println("	<a href=PrikazVMAdmin>Prikaz VM</a>");
+			out.println("	<a href=PrikazDiskAdmin>Prikaz diskova</a>");
+			out.println("	<a href=MesecniRacun>Mesecni racun</a>");
 			out.println("	<a href=Logout>Log out</a>");
-
 			out.println("</div>");
 			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=DodajKorAdminKraj>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
+			if(!imeBul){
+				out.println("<p>Unesite validno ime</p>");
+								}
 			out.println("		<p>Prezime: </p><input type=\"text\" name=\"prezime\" />");
+			if(!prezimeBul){
+				out.println("<p>Unesite validno prezime</p>");
+								}
 			out.println("		<p>Email: </p><input type=\"text\" name=\"email\" />");
-							if(!emailBul)
+							if(!emailBul){
 			out.println("<p>Unesite validan email</p>");
-			out.println("		<p>Pass: </p><input type=\"text\" name=\"pass\" />");
+							}
+			out.println("		<p>Pass: </p><input type=\"password\" name=\"pass\" />");
+			if(!passBul){
+				out.println("<p>Unesite validan password</p>");
+								}
 			out.println("		<p>Tip korisnika:</p><select name=\"uloga\">");
 				out.println("			<option value=\"admin\">Admin</option>");
 				out.println("			<option value=\"user\">Korisnik</option>");
@@ -151,6 +180,19 @@ public class DodajKorAdminKraj extends HttpServlet {
 			out.flush();
 		}
 	}
+
+	public static boolean isValid(String email) 
+    { 
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        return pat.matcher(email).matches(); 
+    } 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

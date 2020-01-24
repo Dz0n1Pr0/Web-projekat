@@ -1,2 +1,0 @@
-org1;opis;logo.jpg;email2@gmail.com-email3@gmail.com;vm1
-org2;opis;logo.jpg;email4@gmail.com-email5@gmail.com;vm2

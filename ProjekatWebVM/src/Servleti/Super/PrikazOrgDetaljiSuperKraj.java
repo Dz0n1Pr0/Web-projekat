@@ -82,11 +82,10 @@ public class PrikazOrgDetaljiSuperKraj extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
-				out.println("<div class=\"linkoviS\">");
+				out.println("<div class=\"linkoviA\">");
 				out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 				out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 				out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -132,11 +131,10 @@ public class PrikazOrgDetaljiSuperKraj extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
-				out.println("<div class=\"linkoviS\">");
+				out.println("<div class=\"linkoviA\">");
 				out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 				out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 				out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -150,8 +148,9 @@ public class PrikazOrgDetaljiSuperKraj extends HttpServlet {
 				out.println("	<form action=PrikazOrgDetaljiSuperKraj>");
 				out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.organizacije.get(request.getParameter("ime")).getIme()+"\"");
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.organizacije.get(request.getParameter("ime")).getIme()+"\"/>");
-				if(!imeBul)
+				if(!imeBul){
 					out.println("<p>Unesite validno ime</p>");
+				}
 				out.println("		<p>Opis: </p><input type=\"text\" name=\"opis\" value=\""+k.organizacije.get(request.getParameter("ime")).getOpis()+"\"/>");
 				out.println("		<p>Logo: </p><input type=\"file\" name=\"logo\"/>");
 				out.println("		<br>");

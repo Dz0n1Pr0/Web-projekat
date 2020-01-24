@@ -47,7 +47,7 @@ public class DodajVMAdminKraj extends HttpServlet {
 		Boolean pass = true, imeBul = true;
 		
 		
-		if(k.virtualne_masine.containsKey(request.getParameter("ime"))){
+		if(k.virtualne_masine.containsKey(request.getParameter("ime")) || request.getParameter("ime").equals("")){
 			imeBul = false;
 			pass = false;
 		}
@@ -105,7 +105,7 @@ public class DodajVMAdminKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
@@ -132,7 +132,7 @@ public class DodajVMAdminKraj extends HttpServlet {
 										if(org.getResursi().contains(vm.getIme()) && org.getIme().equals(k.korisnik.getOrganizacija())){
 		
 			out.println("		<tr>");
-			out.println("			<td><a href=PrikazVMDetaljiSuper?ime=" +vm.getIme()+">" + vm.getIme() + "</a></td>");
+			out.println("			<td><a href=PrikazVMDetaljiAdmin?ime=" +vm.getIme()+">" + vm.getIme() + "</a></td>");
 			out.println("			<td>" + vm.getBroj_jezgara() +  " </td>");
 			out.println("			<td>" + vm.getRam() +  "</td>");
 			out.println("			<td>" + vm.getGpu_jezgra() +  "</td>");
@@ -145,7 +145,7 @@ public class DodajVMAdminKraj extends HttpServlet {
 
 			out.println("</div>");
 			out.println("<div class=\"ostalo2\">");
-			out.println("	<form action=PrikazVMSuper>");
+			out.println("	<form action=PrikazVMAdmin>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 			out.println("		<p>Organizacija: </p><input type=\"text\" name=\"org\" />");
 			out.println("		<p>Broj jezgara: </p><input type=\"text\" name=\"jezgraOd\" /> - <input type=\"text\" name=\"jezgraDo\" />");
@@ -173,7 +173,7 @@ public class DodajVMAdminKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
@@ -188,9 +188,9 @@ public class DodajVMAdminKraj extends HttpServlet {
 			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=DodajVMAdminKraj>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\"/>");
-							if(!imeBul)
+							if(!imeBul){
 				out.println("<p>Unesite validno ime</p>");
-
+							}
 			out.println("		<p>Kategorija :</p><select name=\"kat\">");
 							for(Kategorija kat : k.kategorije.values()){
 			out.println("			<option value=\""+kat.getIme()+"\">"+kat.getIme()+"</option>");

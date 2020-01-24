@@ -81,11 +81,10 @@ public class DodajKatKraj extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
-				out.println("<div class=\"linkoviS\">");
+				out.println("<div class=\"linkoviA\">");
 				out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 				out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 				out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -133,11 +132,10 @@ public class DodajKatKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkoviS\">");
+			out.println("<div class=\"linkoviA\">");
 			out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 			out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 			out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -150,17 +148,23 @@ public class DodajKatKraj extends HttpServlet {
 			out.println("	<form action=DodajKatKraj>");
 			out.println(" 		<input type=\"hidden\" name=\"imeStaro\"/>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\"/>");
-							if(!imeBul)
+							if(!imeBul){
 							out.println("<p>Ime nije validno</p>");
+							}
 			out.println("		<p>Broj jezgara: </p><input type=\"text\" name=\"brjezgra\" />");
-			if(!jezgraBul)
+			if(!jezgraBul){
 				out.println("<p>Broj jezgara nije validno</p>");
+			}
 			out.println("		<p>RAM: </p><input type=\"text\" name=\"ram\" />");
 			if(!ramBul)
+				{
 				out.println("<p>RAM nije validno</p>");
+				}
 			out.println("		<p>GPU: </p><input type=\"text\" name=\"gpu\" />");
 			if(!gpuBul)
+			{
 				out.println("<p>Gpu nije validno</p>");
+			}
 			out.println("		<br>");
 			out.println("		<input type=\"submit\" value=\"submit\" />");
 			out.println("	</form>");

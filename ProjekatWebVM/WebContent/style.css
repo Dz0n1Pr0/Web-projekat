@@ -78,7 +78,15 @@ td img{
 	margin-left:23%;
 }
 
+
 .linkoviA{
+	position: fixed;
+	margin-top:1%;
+	margin-bottom:20%;
+	margin-left:15%;
+}
+
+.linkoviS{
 	position: fixed;
 	margin-top:1%;
 	margin-bottom:20%;

@@ -79,7 +79,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+				out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
@@ -101,7 +101,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 				out.println("			<th>Tip</th>");
 				out.println("		</tr>");
 									for(Disk dk : temp){
-										if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(dk)){
+										if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(dk.getIme())){
 				out.println("		<tr>");
 				out.println("			<td><a href=PrikazDiskDetaljiAdmin?ime=" +dk.getIme()+">" + dk.getIme() + "</a></td>");
 				out.println("			<td>" + dk.getKapacitet() +  " </td>");
@@ -116,8 +116,8 @@ public class PrikazDiskAdmin extends HttpServlet {
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 				out.println("		<p>Kapacitet: </p><input type=\"text\" name=\"kapacitetOd\" /> - <input type=\"text\" name=\"kapacitetDo\" />");
 				out.println("		<p>Po cemu filtrirati:</p><select name=\"tip\">");
-				out.println("			<option value=\"SSD\">Datum</option>");
-				out.println("			<option value=\"HDD\">Klasa</option>");
+				out.println("			<option value=\"SSD\">SSD</option>");
+				out.println("			<option value=\"HDD\">HDD</option>");
 				out.println("		</select>");
 				out.println("		<br>");
 				out.println("		<input type=\"submit\" value=\"submit\" />");
@@ -142,7 +142,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
@@ -164,7 +164,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 			out.println("			<th>Tip</th>");
 			out.println("		</tr>");
 								for(Disk dk : k.diskovi.values()){
-									if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(dk)){
+									if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(dk.getIme())){
 			out.println("		<tr>");
 			out.println("			<td><a href=PrikazDiskDetaljiAdmin?ime=" +dk.getIme()+">" + dk.getIme() + "</a></td>");
 			out.println("			<td>" + dk.getKapacitet() +  " </td>");
@@ -172,7 +172,9 @@ public class PrikazDiskAdmin extends HttpServlet {
 			out.println("		</tr>");
 								}}
 			out.println("	</table>");
-			
+
+			out.println("</div>");
+			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=PrikazDiskAdmin>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 			out.println("		<p>Kapacitet: </p><input type=\"text\" name=\"kapacitetOd\" /> - <input type=\"text\" name=\"kapacitetDo\" />");

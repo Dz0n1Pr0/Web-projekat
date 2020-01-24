@@ -84,7 +84,7 @@ public class Podaci {
 	
 	public void UcitavanjeFajlova() throws IOException{
 		
-		File file = new File("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/users.txt");
+		File file = new File("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/users.txt");
 		
 		BufferedReader br = new BufferedReader(new FileReader(file));
 		
@@ -98,7 +98,7 @@ public class Podaci {
 		}
 		br.close();
 		
-		file = new File("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/disk.txt"); 
+		file = new File("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/disk.txt"); 
 		  
 		br = new BufferedReader(new FileReader(file)); 
 		
@@ -111,7 +111,7 @@ public class Podaci {
 		br.close();
 		
 		
-		file = new File("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/kategorija.txt"); 
+		file = new File("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/kategorija.txt"); 
 		  
 		br = new BufferedReader(new FileReader(file)); 
 		
@@ -124,7 +124,7 @@ public class Podaci {
 		br.close();
 		
 		
-		file = new File("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/organizacija.txt"); 
+		file = new File("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/organizacija.txt"); 
 		  
 		br = new BufferedReader(new FileReader(file)); 
 		
@@ -195,7 +195,7 @@ public class Podaci {
 		  
 		br.close();
 		
-		file = new File("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/virtualnamasina.txt"); 
+		file = new File("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/virtualnamasina.txt"); 
 		  
 		br = new BufferedReader(new FileReader(file)); 
 		
@@ -225,7 +225,7 @@ public class Podaci {
 		br.close();
 		
 		
-		file = new File("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/aktivnost.txt"); 
+		file = new File("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/aktivnost.txt"); 
 		  
 		br = new BufferedReader(new FileReader(file)); 
 		
@@ -242,7 +242,7 @@ public class Podaci {
 	
 	public void UpisFajl() throws IOException{
 		
-		PrintWriter pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/users.txt"));	
+		PrintWriter pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/users.txt"));	
 		//String user, String pass, String email, String ime, String prezime, String organizacija,
 		//String uloga
 		
@@ -254,7 +254,7 @@ public class Podaci {
 		pw.close();
 		
 		
-		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/disk.txt"));	
+		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/disk.txt"));	
 		//String ime, String tip, String ime_vm, int kapacitet
 		
 		for(Disk dk : diskovi.values()){
@@ -267,7 +267,7 @@ public class Podaci {
 		
 		
 		
-		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/kategorija.txt"));	
+		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/kategorija.txt"));	
 		//String ime, int broj_jezgara, int ram, int gpu_jezgra
 		
 		for(Kategorija kat : kategorije.values()){
@@ -280,7 +280,7 @@ public class Podaci {
 		
 		
 		
-		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/organizacija.txt"));	
+		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/organizacija.txt"));	
 		//String ime, String opis, String logo, ArrayList<String> korisnici,
 				//ArrayList<String> resursi
 		for(Organizacija or : organizacije.values()){
@@ -310,7 +310,7 @@ public class Podaci {
 		
 		
 		
-		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/virtualnamasina.txt"));
+		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/virtualnamasina.txt"));
 
 		//String ime, String kategorija, int broj_jezgara, int ram, int gpu_jezgra,
 		//ArrayList<String> diskovi
@@ -341,7 +341,7 @@ public class Podaci {
 		
 		
 
-		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/workspace2/ProjekatWebVM/aktivnost.txt"));	
+		pw = new PrintWriter(new FileWriter("C:/Users/Dz0n1Pr0/Desktop/Web-projekat/ProjekatWebVM/aktivnost.txt"));	
 		//String ime, String tip, String ime_vm, int kapacitet
 		
 		for(Aktivnost ak : aktivnosti.values()){

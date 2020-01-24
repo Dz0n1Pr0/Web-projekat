@@ -136,7 +136,7 @@ public class MesecniRacun extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+				out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
@@ -207,7 +207,7 @@ public class MesecniRacun extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
@@ -222,6 +222,7 @@ public class MesecniRacun extends HttpServlet {
 			out.println("<div class=\"ostalo2\">");
 			
 			out.println("	<form action=MesecniRacun>");
+			out.println("		<p>Format datuma je YYYY-MM-DD (2020-01-20)</p>");
 			out.println("		<p>Datum od: </p><input type=\"text\" name=\"datumOd\" />");
 			out.println("		<p>Datum do: </p><input type=\"text\" name=\"datumDo\" />");
 			out.println("		<br>");

@@ -78,14 +78,14 @@ public class Glavna extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+korisnik.getOrganizacija()+"</p>");
+				out.println("	<p>Organizacija: "+korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
 				out.println("<div class=\"linkovi\">");
 				out.println("	<a href=IzmenaKor>Izmeni Profil</a>");
 				out.println("	<a href=PrikazVMKorisnik>Prikazi VM</a>");
-				out.println("	<a href=PrikazDiskKorisnik>Prikazi VM</a>");
+				out.println("	<a href=PrikazDiskKorisnik>Prikazi Disk</a>");
 				out.println("	<a href=Logout>Log out</a>");
 
 				out.println("</div>");
@@ -111,7 +111,7 @@ public class Glavna extends HttpServlet {
 					out.println("<div class=\"glava\">");
 					out.println("	<p>Ime: "+korisnik.getIme()+"</p>");
 					out.println("	<p>Prezime: "+korisnik.getPrezime()+"</p>");
-					out.println("	<p>Telefon: "+korisnik.getOrganizacija()+"</p>");
+					out.println("	<p>Organizacija: "+korisnik.getOrganizacija()+"</p>");
 					out.println("	<p>Email: "+korisnik.getEmail()+"</p>");
 					out.println("	<br>");
 					out.println("</div>");
@@ -144,11 +144,10 @@ public class Glavna extends HttpServlet {
 					out.println("<div class=\"glava\">");
 					out.println("	<p>Ime: "+korisnik.getIme()+"</p>");
 					out.println("	<p>Prezime: "+korisnik.getPrezime()+"</p>");
-					out.println("	<p>Telefon: "+korisnik.getOrganizacija()+"</p>");
 					out.println("	<p>Email: "+korisnik.getEmail()+"</p>");
 					out.println("	<br>");
 					out.println("</div>");
-					out.println("<div class=\"linkoviS\">");
+					out.println("<div class=\"linkoviA\">");
 					out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 					out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 					out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");

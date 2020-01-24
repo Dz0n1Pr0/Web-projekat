@@ -85,14 +85,14 @@ public class PrikazVMKorisnik extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+				out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
 				out.println("<div class=\"linkovi\">");
 				out.println("	<a href=IzmenaKor>Izmeni Profil</a>");
 				out.println("	<a href=PrikazVMKorisnik>Prikazi VM</a>");
-				out.println("	<a href=PrikazDiskKorisnik>Prikazi VM</a>");
+				out.println("	<a href=PrikazDiskKorisnik>Prikazi Disk</a>");
 				out.println("	<a href=Logout>Log out</a>");
 
 				out.println("</div>");
@@ -122,8 +122,8 @@ public class PrikazVMKorisnik extends HttpServlet {
 				out.println("	<form action=PrikazVMKorisnik>");
 				out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 				out.println("		<p>Broj jezgara: </p><input type=\"text\" name=\"jezgraOd\" /> - <input type=\"text\" name=\"jezgraDo\" />");
-				out.println("		<p>Email: </p><input type=\"text\" name=\"ramOd\" /> - <input type=\"text\" name=\"ramDo\" />");
-				out.println("		<p>Password: </p><input type=\"text\" name=\"gpuOd\" /> - <input type=\"text\" name=\"gpuDo\" />");
+				out.println("		<p>RAM: </p><input type=\"text\" name=\"ramOd\" /> - <input type=\"text\" name=\"ramDo\" />");
+				out.println("		<p>GPU: </p><input type=\"text\" name=\"gpuOd\" /> - <input type=\"text\" name=\"gpuDo\" />");
 				out.println("		<br>");
 				out.println("		<input type=\"submit\" value=\"submit\" />");
 				out.println("	</form>");
@@ -148,14 +148,14 @@ public class PrikazVMKorisnik extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
 			out.println("<div class=\"linkovi\">");
 			out.println("	<a href=IzmenaKor>Izmeni Profil</a>");
 			out.println("	<a href=PrikazVMKorisnik>Prikazi VM</a>");
-			out.println("	<a href=PrikazDiskKorisnik>Prikazi VM</a>");
+			out.println("	<a href=PrikazDiskKorisnik>Prikazi Disk</a>");
 			out.println("	<a href=Logout>Log out</a>");
 
 			out.println("</div>");

@@ -50,7 +50,7 @@ public class PrikazDiskDetaljiAdmin extends HttpServlet {
 		out.println("<div class=\"glava\">");
 		out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 		out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-		out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+		out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 		out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 		out.println("	<br>");
 		out.println("</div>");
@@ -72,7 +72,8 @@ public class PrikazDiskDetaljiAdmin extends HttpServlet {
 		out.println("			<option value=\"HDD\">HDD</option>");
 		out.println("		</select>");
 		out.println("		<br>");
-		out.println("		<p>Otkaciti se sa VM: </p><input type=\"checkbox\" name=\"vcheck\" value=\"true\"/>");
+		out.println("		<p>Otkaciti se sa VM: </p><input type=\"checkbox\" name=\"vcheck\" value=\"true\"/><br/>");
+		out.println("		<p>Virtualne Masine</p>");
 						for(Virtualna_masina vm : k.virtualne_masine.values()){
 								if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(vm.getIme()) && k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(request.getParameter("ime"))){
 									if(vm.getDiskovi().contains(request.getParameter("ime")))
@@ -82,7 +83,7 @@ public class PrikazDiskDetaljiAdmin extends HttpServlet {
 								}
 							
 						}
-		out.println("		<input type=\"submit\" value=\"submit\" />");
+		out.println("	<br/><input type=\"submit\" value=\"submit\" />");
 		out.println("	</form>");
 
 		out.println("<a href=ObrisiDiskAdmin?ime="+request.getParameter("ime")+">Obrisi Disk</a>");

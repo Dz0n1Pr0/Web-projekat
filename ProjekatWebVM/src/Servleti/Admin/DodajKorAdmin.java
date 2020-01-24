@@ -49,7 +49,7 @@ public class DodajKorAdmin extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
@@ -66,7 +66,7 @@ public class DodajKorAdmin extends HttpServlet {
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
 			out.println("		<p>Prezime: </p><input type=\"text\" name=\"prezime\" />");
 			out.println("		<p>Email: </p><input type=\"text\" name=\"email\" />");
-			out.println("		<p>Pass: </p><input type=\"text\" name=\"pass\" />");
+			out.println("		<p>Pass: </p><input type=\"password\" name=\"pass\" />");
 			out.println("		<p>Tip korisnika:</p><select name=\"uloga\">");
 				out.println("			<option value=\"admin\">Admin</option>");
 				out.println("			<option value=\"user\">Korisnik</option>");

@@ -42,7 +42,7 @@ public class PrikazVMDetaljiSuperKraj extends HttpServlet {
 		
 		Boolean pass = true, imeBul = true;
 		
-		if(k.virtualne_masine.containsKey(request.getParameter("ime"))){
+		if(k.virtualne_masine.containsKey(request.getParameter("ime")) && !request.getParameter("ime").equals(request.getParameter("imeStaro"))){
 			imeBul = false;
 			pass = false;
 		}
@@ -103,11 +103,10 @@ public class PrikazVMDetaljiSuperKraj extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
-				out.println("<div class=\"linkoviS\">");
+				out.println("<div class=\"linkoviA\">");
 				out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 				out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 				out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -166,11 +165,10 @@ public class PrikazVMDetaljiSuperKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkoviS\">");
+			out.println("<div class=\"linkoviA\">");
 			out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 			out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 			out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -200,6 +198,7 @@ public class PrikazVMDetaljiSuperKraj extends HttpServlet {
 			out.println(" 		<input type=\"text\" name=\""+ak+"D\" value=\""+k.aktivnosti.get(ak).getDate()+"\"/>");
 			out.println(" 		<input type=\"text\" name=\""+ak+"S\" value=\""+k.aktivnosti.get(ak).getStatus()+"\"/>");
 							}
+			out.println("<br/>Diskovi<br/>");
 							for(Disk dk : k.diskovi.values()){
 								for(Organizacija org : k.organizacije.values()){
 									if(org.getResursi().contains(dk.getIme()) && dk.getIme_vm().equals("") && org.getResursi().contains(request.getParameter("ime"))){

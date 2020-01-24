@@ -2,6 +2,7 @@ package Servleti.Super;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,13 +38,30 @@ public class DodajKorSuperKraj extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
-		Boolean passed = true, emailBul = true;
+		Boolean passed = true, emailBul = true, imeBul = true, prezimeBul = true, passBul = true;
 
-		if(k.korisnici.containsKey(request.getParameter("email")) || !request.getParameter("email").contains("@")){
+		if(request.getParameter("ime").equals("")){
+			imeBul = false;
+			passed = false;
+		}
+		
+		if(request.getParameter("prezime").equals("")){
+			passed = false;
+			prezimeBul = false;
+		}
+		
+
+		if(request.getParameter("pass").equals("")){
+			passed = false;
+			passBul = false;
+		}
+		
+		if(k.korisnici.containsKey(request.getParameter("email")) || !isValid(request.getParameter("email"))){
 			passed = false;
 			emailBul = false;
 			
 		}
+		
 		
 		if(passed){
 			Korisnik kor = new Korisnik();
@@ -70,11 +88,10 @@ public class DodajKorSuperKraj extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
-				out.println("<div class=\"linkoviS\">");
+				out.println("<div class=\"linkoviA\">");
 				out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 				out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 				out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -123,11 +140,10 @@ public class DodajKorSuperKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkoviS\">");
+			out.println("<div class=\"linkoviA\">");
 			out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 			out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 			out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -139,11 +155,21 @@ public class DodajKorSuperKraj extends HttpServlet {
 			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=DodajKorSuperKraj>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" />");
+			if(!imeBul){
+				out.println("<p>Unesite validno ime</p>");
+								}
 			out.println("		<p>Prezime: </p><input type=\"text\" name=\"prezime\" />");
+			if(!prezimeBul){
+				out.println("<p>Unesite validno prezime</p>");
+								}
 			out.println("		<p>Email: </p><input type=\"text\" name=\"email\" />");
-							if(!emailBul)
+							if(!emailBul){
 			out.println("<p>Unesite validan email</p>");
-			out.println("		<p>Pass: </p><input type=\"text\" name=\"pass\" />");
+							}
+			out.println("		<p>Pass: </p><input type=\"password\" name=\"pass\" />");
+			if(!passBul){
+				out.println("<p>Unesite validan password</p>");
+								}
 			out.println("		<p>	Organizacija:</p><select name=\"org\">");
 							for(Organizacija org : k.organizacije.values()){
 								if(!k.korisnik.getOrganizacija().equals(org.getIme())){
@@ -172,4 +198,18 @@ public class DodajKorSuperKraj extends HttpServlet {
 		doGet(request, response);
 	}
 
+	public static boolean isValid(String email) 
+    { 
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+                              
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        return pat.matcher(email).matches(); 
+    } 
+
+	
 }

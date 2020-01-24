@@ -47,11 +47,10 @@ public class DodajKat extends HttpServlet {
 		out.println("<div class=\"glava\">");
 		out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 		out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-		out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 		out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 		out.println("	<br>");
 		out.println("</div>");
-		out.println("<div class=\"linkoviS\">");
+		out.println("<div class=\"linkoviA\">");
 		out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 		out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 		out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");

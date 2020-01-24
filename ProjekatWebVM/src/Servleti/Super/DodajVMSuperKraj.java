@@ -58,7 +58,7 @@ public class DodajVMSuperKraj extends HttpServlet {
 		}
 		
 		
-		if(k.virtualne_masine.containsKey(request.getParameter("ime"))){
+		if(k.virtualne_masine.containsKey(request.getParameter("ime")) || request.getParameter("ime").equals("")){
 			imeBul = false;
 			pass = false;
 		}
@@ -116,11 +116,10 @@ public class DodajVMSuperKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkoviS\">");
+			out.println("<div class=\"linkoviA\">");
 			out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 			out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 			out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -182,11 +181,10 @@ public class DodajVMSuperKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkoviS\">");
+			out.println("<div class=\"linkoviA\">");
 			out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 			out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 			out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -198,9 +196,9 @@ public class DodajVMSuperKraj extends HttpServlet {
 			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=DodajVMSuperKraj>");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\"/>");
-								if(!imeBul)
+								if(!imeBul){
 							out.println("<p>Unesite validno ime</p>");
-
+								}
 			out.println("		<p>Organizacija :</p><select name=\"org\">");
 							for(Organizacija org : k.organizacije.values()){
 								if(!k.korisnik.getOrganizacija().equals(org.getIme())){

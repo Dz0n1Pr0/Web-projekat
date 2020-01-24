@@ -49,11 +49,10 @@ public class PrikazKorSuper extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkoviS\">");
+			out.println("<div class=\"linkoviA\">");
 			out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 			out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 			out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -73,13 +72,14 @@ public class PrikazKorSuper extends HttpServlet {
 			out.println("			<th>Organizacija</th>");
 			out.println("		</tr>");
 								for(Korisnik kor : k.korisnici.values()){
-									
+									if(!kor.getEmail().equals(k.korisnik.getEmail())){
 			out.println("		<tr>");
 			out.println("			<td><a href=PrikazKorDetaljiSuper?email=" +kor.getEmail()+">" + kor.getIme() + "</a></td>");
 			out.println("			<td>" + kor.getPrezime() +  " </td>");
 			out.println("			<td>" + kor.getEmail() +  " </td>");
 			out.println("			<td>" + kor.getOrganizacija() +  " </td>");
 			out.println("		</tr>");
+									}
 								}
 			out.println("	</table>");
 			

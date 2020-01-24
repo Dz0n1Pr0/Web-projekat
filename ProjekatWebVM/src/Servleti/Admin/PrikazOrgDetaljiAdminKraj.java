@@ -80,7 +80,7 @@ public class PrikazOrgDetaljiAdminKraj extends HttpServlet {
 		out.println("<div class=\"glava\">");
 		out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 		out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-		out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+		out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 		out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 		out.println("	<br>");
 		out.println("</div>");
@@ -93,7 +93,7 @@ public class PrikazOrgDetaljiAdminKraj extends HttpServlet {
 		out.println("	<a href=Logout>Log out</a>");
 		out.println("</div>");
 		out.println("<div class=\"ostalo\">");
-		out.println("<p>SUPER ADMIN</p>");
+		out.println("<p>ADMIN</p>");
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</body>");
@@ -112,22 +112,26 @@ public class PrikazOrgDetaljiAdminKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkovi\">");
-			out.println("	<a href=IzmenaKor>Izmeni Profil</a>");
+			out.println("<div class=\"linkoviA\">");
+			out.println("	<a href=PrikazOrgDetaljiAdmin>Prikaz organizacije</a>");
+			out.println("	<a href=PrikazKorAdmin>Prikaz korisnika organizacije</a>");
+			out.println("	<a href=PrikazVMAdmin>Prikaz VM</a>");
+			out.println("	<a href=PrikazDiskAdmin>Prikaz diskova</a>");
+			out.println("	<a href=MesecniRacun>Mesecni racun</a>");
 			out.println("	<a href=Logout>Log out</a>");
-
 			out.println("</div>");
 			out.println("<div class=\"ostalo2\">");
 							
 			out.println("	<form action=PrikazOrgDetaljiAdminKraj>");
 			out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.organizacije.get(k.korisnik.getOrganizacija()).getIme()+"\"");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.organizacije.get(k.korisnik.getOrganizacija()).getIme()+"\"/>");
-								if(!imeBul)
+								if(!imeBul){
 									out.println("<p>Unesite validno ime</p>");
+								}
 			out.println("		<p>Opis: </p><input type=\"text\" name=\"opis\" value=\""+k.organizacije.get(k.korisnik.getOrganizacija()).getOpis()+"\"/>");
 			out.println("		<p>Logo: </p><input type=\"file\" name=\"logo\" value=\""+k.organizacije.get(k.korisnik.getOrganizacija()).getLogo()+"\"/>");
 			out.println("		<br>");

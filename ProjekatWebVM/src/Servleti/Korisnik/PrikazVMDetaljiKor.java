@@ -49,14 +49,14 @@ public class PrikazVMDetaljiKor extends HttpServlet {
 		out.println("<div class=\"glava\">");
 		out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 		out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-		out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+		out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 		out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 		out.println("	<br>");
 		out.println("</div>");
 		out.println("<div class=\"linkovi\">");
 		out.println("	<a href=IzmenaKor>Izmeni Profil</a>");
 		out.println("	<a href=PrikazVMKorisnik>Prikazi VM</a>");
-		out.println("	<a href=PrikazDiskKorisnik>Prikazi VM</a>");
+		out.println("	<a href=PrikazDiskKorisnik>Prikazi Disk</a>");
 		out.println("	<a href=Logout>Log out</a>");
 
 		out.println("</div>");

@@ -46,11 +46,10 @@ public class IzmenaKorSuper extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
-			out.println("<div class=\"linkoviS\">");
+			out.println("<div class=\"linkoviA\">");
 			out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 			out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 			out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -65,8 +64,8 @@ public class IzmenaKorSuper extends HttpServlet {
 			out.println("		<p>Prezime: </p><input type=\"text\" name=\"prezime\" value=\""+k.korisnik.getPrezime()+"\"/>");
 			out.println("		<p>Email: </p><input type=\"text\" name=\"email\" value=\""+k.korisnik.getEmail()+"\"/>");
 			out.println("		<input type=\"hidden\" name=\"emailStaro\" value=\""+k.korisnik.getEmail()+"\"/>");
-			out.println("		<p>Password: </p><input type=\"text\" name=\"pass\" value=\""+k.korisnik.getPass()+"\"/>");
-			out.println("		<p>Password again: </p><input type=\"text\" name=\"passPonovo\" value=\""+k.korisnik.getPass()+"\"/>");
+			out.println("		<p>Password: </p><input type=\"password\" name=\"pass\" value=\""+k.korisnik.getPass()+"\"/>");
+			out.println("		<p>Password again: </p><input type=\"password\" name=\"passPonovo\" value=\"\"/>");
 			out.println("		<br>");
 			out.println("		<input type=\"submit\" value=\"submit\" />");
 			out.println("	</form>");

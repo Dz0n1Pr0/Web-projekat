@@ -51,11 +51,10 @@ public class PrikazDiskDetaljiSuper extends HttpServlet {
 		out.println("<div class=\"glava\">");
 		out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 		out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-		out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
 		out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 		out.println("	<br>");
 		out.println("</div>");
-		out.println("<div class=\"linkoviS\">");
+		out.println("<div class=\"linkoviA\">");
 		out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
 		out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
 		out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
@@ -74,7 +73,8 @@ public class PrikazDiskDetaljiSuper extends HttpServlet {
 		out.println("			<option value=\"HDD\">HDD</option>");
 		out.println("		</select>");
 		out.println("		<br>");
-		out.println("		<p>Otkaciti se sa VM: </p><input type=\"checkbox\" name=\"vcheck\" value=\"true\"/>");
+		out.println("		<p>Otkaciti se sa VM: </p><input type=\"checkbox\" name=\"vcheck\" value=\"true\"/><br/>");
+		out.println("		<p>Virtualne Masine</p>");			
 						for(Virtualna_masina vm : k.virtualne_masine.values()){
 							for(Organizacija org : k.organizacije.values()){
 								if(org.getResursi().contains(vm.getIme()) && org.getResursi().contains(request.getParameter("ime"))){
@@ -85,7 +85,7 @@ public class PrikazDiskDetaljiSuper extends HttpServlet {
 								}
 							}
 						}
-		out.println("		<input type=\"submit\" value=\"submit\" />");
+		out.println("	<br/><input type=\"submit\" value=\"submit\" />");
 		out.println("	</form>");
 
 		out.println("<a href=ObrisiDiskSuper?ime="+request.getParameter("ime")+">Obrisi Disk</a>");

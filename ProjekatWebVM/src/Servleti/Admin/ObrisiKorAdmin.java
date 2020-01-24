@@ -36,12 +36,10 @@ public class ObrisiKorAdmin extends HttpServlet {
 		request.setCharacterEncoding(response.getCharacterEncoding());
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
-		
-		k.korisnici.remove(request.getParameter("email"));
-		
 
-		k.organizacije.get(k.getKorisnici().get(request.getParameter("email")).getOrganizacija()).getKorisnici().remove(request.getParameter("email"));
-		
+		k.organizacije.get(k.korisnici.get(request.getParameter("email")).getOrganizacija()).getKorisnici().remove(request.getParameter("email"));
+				
+		k.korisnici.remove(request.getParameter("email"));
 		
 		out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		  out.println("<html>");
@@ -55,7 +53,7 @@ public class ObrisiKorAdmin extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");

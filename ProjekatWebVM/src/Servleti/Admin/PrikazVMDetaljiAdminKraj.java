@@ -42,7 +42,7 @@ public class PrikazVMDetaljiAdminKraj extends HttpServlet {
 		
 		Boolean pass = true, imeBul = true;
 		
-		if(k.virtualne_masine.containsKey(request.getParameter("ime"))){
+		if(k.virtualne_masine.containsKey(request.getParameter("ime")) && !request.getParameter("ime").equals(request.getParameter("imeStaro"))){
 			imeBul = false;
 			pass = false;
 		}
@@ -99,7 +99,7 @@ public class PrikazVMDetaljiAdminKraj extends HttpServlet {
 				out.println("<div class=\"glava\">");
 				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+				out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 				out.println("	<br>");
 				out.println("</div>");
@@ -164,7 +164,7 @@ public class PrikazVMDetaljiAdminKraj extends HttpServlet {
 			out.println("<div class=\"glava\">");
 			out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
 			out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-			out.println("	<p>Telefon: "+k.korisnik.getOrganizacija()+"</p>");
+			out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
 			out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
 			out.println("	<br>");
 			out.println("</div>");
@@ -197,6 +197,7 @@ public class PrikazVMDetaljiAdminKraj extends HttpServlet {
 			out.println(" 		<input type=\"text\" name=\""+ak+"D\" value=\""+k.aktivnosti.get(ak).getDate()+"\" disabled/>");
 			out.println(" 		<input type=\"text\" name=\""+ak+"S\" value=\""+k.aktivnosti.get(ak).getStatus()+"\" disabled/>");
 							}
+			out.println("<br/>Diskovi<br/>");
 							for(Disk dk : k.diskovi.values()){
 									if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(dk.getIme()) && dk.getIme_vm().equals("") &&
 											k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(request.getParameter("ime"))){
