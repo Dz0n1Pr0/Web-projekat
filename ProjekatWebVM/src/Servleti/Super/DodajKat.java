@@ -69,7 +69,6 @@ public class DodajKat extends HttpServlet {
 		out.println("		<input type=\"submit\" value=\"submit\" />");
 		out.println("	</form>");
 
-		out.println("<a href=ObrisiKat?ime="+request.getParameter("ime")+">Obrisi Kategoriju</a>");
 		out.println("</div></div>");
 		out.println("</body>");
 		out.println("</html>");

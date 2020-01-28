@@ -37,7 +37,7 @@ public class DodajKatKraj extends HttpServlet {
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 	Boolean passed = true, imeBul = true, jezgraBul = true, ramBul = true, gpuBul = true;
 		
-		if(k.diskovi.containsKey(request.getParameter("ime"))){
+		if(k.kategorije.containsKey(request.getParameter("ime"))){
 			passed = false;
 			imeBul = false;
 		}
@@ -108,13 +108,14 @@ public class DodajKatKraj extends HttpServlet {
 				out.println("		<tr>");
 				out.println("			<td><a href=PrikazKatDetalji?ime=" +kategorija.getIme()+">" + kategorija.getIme() + "</a></td>");
 				out.println("			<td>" + kategorija.getBroj_jezgara() +  " </td>");
-				out.println("			<td><img src=\""+kategorija.getRam()+"\"/></td>");
-				out.println("			<td><img src=\""+kategorija.getGpu_jezgra()+"\"/></td>");
+				out.println("			<td>"+kategorija.getRam()+"</td>");
+				out.println("			<td>"+kategorija.getGpu_jezgra()+"</td>");
 				out.println("		</tr>");
 									}
 				out.println("	</table>");
-				
+
 				out.println("	<a href=\"DodajKat\">Dodaj Kategoriju</a>");
+				out.println(" </div></div>");
 				out.println("</body>");
 				out.println("</html>");
 				out.flush();
@@ -169,7 +170,6 @@ public class DodajKatKraj extends HttpServlet {
 			out.println("		<input type=\"submit\" value=\"submit\" />");
 			out.println("	</form>");
 
-			out.println("<a href=ObrisiKat?ime="+request.getParameter("ime")+">Obrisi Kategoriju</a>");
 			out.println("</div></div>");
 			out.println("</body>");
 			out.println("</html>");

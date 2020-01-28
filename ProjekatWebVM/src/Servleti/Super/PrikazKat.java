@@ -83,6 +83,7 @@ public class PrikazKat extends HttpServlet {
 			out.println("	</table>");
 			
 			out.println("	<a href=\"DodajKat\">Dodaj Kategoriju</a>");
+			out.println(" </div></div>");
 			out.println("</body>");
 			out.println("</html>");
 			out.flush();

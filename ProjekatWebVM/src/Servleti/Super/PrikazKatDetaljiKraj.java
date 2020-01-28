@@ -150,8 +150,9 @@ public class PrikazKatDetaljiKraj extends HttpServlet {
 		out.println("	<form action=PrikazKatDetaljiKraj>");
 		out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.kategorije.get(request.getParameter("ime")).getIme()+"\"");
 		out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.kategorije.get(request.getParameter("ime")).getIme()+"\"/>");
-						if(!imeBul)
+						if(!imeBul){
 			out.println("<p>Ime nije validno</p>");
+						}
 		out.println("		<p>Broj jezgara: </p><input type=\"text\" value=\""+k.kategorije.get(request.getParameter("ime")).getBroj_jezgara()+"\"/ >");
 		if(!jezgraBul)
 			out.println("<p>Broj jezgara nije validno</p>");
