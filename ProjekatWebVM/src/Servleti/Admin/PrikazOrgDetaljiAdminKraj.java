@@ -37,6 +37,11 @@ public class PrikazOrgDetaljiAdminKraj extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 
+		if(!k.korisnik.getUloga().equals("admin")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
+		
 		Boolean passed = true, imeBul = true;
 		if(!request.getParameter("imeStaro").equals(request.getParameter("ime"))){
 		if(k.organizacije.containsKey(request.getParameter("ime"))){
@@ -68,38 +73,12 @@ public class PrikazOrgDetaljiAdminKraj extends HttpServlet {
 			
 			k.UpisFajl();
 			
-		out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
-		out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
-		out.println("<title>Insert title here</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("<div class=\"center\">");
-		out.println("<div class=\"glava\">");
-		out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
-		out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-		out.println("	<p>Organizacija: "+k.korisnik.getOrganizacija()+"</p>");
-		out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
-		out.println("	<br>");
-		out.println("</div>");
-		out.println("<div class=\"linkoviA\">");
-		out.println("	<a href=PrikazOrgDetaljiAdmin>Prikaz organizacije</a>");
-		out.println("	<a href=PrikazKorAdmin>Prikaz korisnika organizacije</a>");
-		out.println("	<a href=PrikazVMAdmin>Prikaz VM</a>");
-		out.println("	<a href=PrikazDiskAdmin>Prikaz diskova</a>");
-		out.println("	<a href=MesecniRacun>Mesecni racun</a>");
-		out.println("	<a href=Logout>Log out</a>");
-		out.println("</div>");
-		out.println("<div class=\"ostalo\">");
-		out.println("<p>ADMIN</p>");
-		out.println("</div>");
-		out.println("</div>");
-		out.println("</body>");
-		out.println("</html>");
-		out.flush();
+			response.sendRedirect(k.putanja + "PrikazOrgDetaljiAdmin");
+			
 		}else{
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			
+			
 		    out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		    out.println("<html>");
 		  	out.println("<head>");
@@ -141,6 +120,7 @@ public class PrikazOrgDetaljiAdminKraj extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 			out.flush();
+		}
 		}
 	}
 

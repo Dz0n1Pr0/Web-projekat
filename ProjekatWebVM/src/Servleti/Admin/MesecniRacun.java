@@ -48,6 +48,12 @@ public class MesecniRacun extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
+		if(!k.korisnik.getUloga().equals("admin")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
+		
+		
 		if(!(""+ request.getParameter("datumOd")).equals("null") && !(""+request.getParameter("datumDo")).equals("null")){
 			
 			ArrayList<Virtualna_masina> temp = new ArrayList<Virtualna_masina>();
@@ -233,6 +239,7 @@ public class MesecniRacun extends HttpServlet {
 			out.println("</html>");
 			out.flush();
 		}
+	}
 	}
 
 	/**

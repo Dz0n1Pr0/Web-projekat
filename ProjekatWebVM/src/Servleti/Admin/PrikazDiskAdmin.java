@@ -37,6 +37,12 @@ public class PrikazDiskAdmin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
+		if(!k.korisnik.getUloga().equals("admin")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
+		
+				
 		if(!(""+ request.getParameter("ime")).equals("null")){
 			
 			ArrayList<Disk> temp = new ArrayList<Disk>();
@@ -110,6 +116,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 									}}
 				out.println("	</table>");
 
+				out.println("<a href=\"DodajDiskAdmin\">Dodaj disk</a>");
 				out.println("</div>");
 				out.println("<div class=\"ostalo2\">");
 				out.println("	<form action=PrikazDiskAdmin>");
@@ -128,7 +135,6 @@ public class PrikazDiskAdmin extends HttpServlet {
 				out.flush();
 			
 		}else{
-			
 		
 			  out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		  out.println("<html>");
@@ -173,6 +179,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 								}}
 			out.println("	</table>");
 
+			out.println("<a href=\"DodajDiskAdmin\">Dodaj disk</a>");
 			out.println("</div>");
 			out.println("<div class=\"ostalo2\">");
 			out.println("	<form action=PrikazDiskAdmin>");
@@ -190,6 +197,7 @@ public class PrikazDiskAdmin extends HttpServlet {
 			out.println("</html>");
 			out.flush();
 
+		}
 		}
 	}
 

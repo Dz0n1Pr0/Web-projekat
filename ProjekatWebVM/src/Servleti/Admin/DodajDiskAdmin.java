@@ -37,6 +37,11 @@ public class DodajDiskAdmin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
+		if(!k.korisnik.getUloga().equals("admin")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
+		
 
 		out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		out.println("<html>");
@@ -70,7 +75,7 @@ public class DodajDiskAdmin extends HttpServlet {
 		out.println("			<option value=\"SSD\">SSD</option>");
 		out.println("			<option value=\"HDD\">HDD</option>");
 		out.println("		</select>");
-		out.println("		<br>");
+		out.println("		<br/>");
 						for(Virtualna_masina vm : k.virtualne_masine.values()){
 								if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(vm.getIme())){
 								
@@ -78,14 +83,14 @@ public class DodajDiskAdmin extends HttpServlet {
 								}
 							
 						}
-		out.println("		<input type=\"submit\" value=\"submit\" />");
+		out.println("	<br/><input type=\"submit\" value=\"submit\" />");
 		out.println("	</form>");
 
 		out.println("</div></div>");
 		out.println("</body>");
 		out.println("</html>");
 		out.flush();
-
+			}
 	}
 
 	/**

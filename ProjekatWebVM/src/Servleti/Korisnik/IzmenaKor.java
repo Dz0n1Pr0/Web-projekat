@@ -34,6 +34,12 @@ public class IzmenaKor extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
+
+		if(!k.korisnik.getUloga().equals("user")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect("http://localhost:8080/ProjekatWebVM/Login.jsp");
+			}else{
+		
 			  out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		  out.println("<html>");
 		  out.println("<head>");
@@ -73,6 +79,7 @@ public class IzmenaKor extends HttpServlet {
 			out.println("</html>");
 			out.flush();
 			
+		}
 	}
 
 	/**

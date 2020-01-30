@@ -36,6 +36,10 @@ public class PrikazKorAdmin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 			
+		if(!k.korisnik.getUloga().equals("admin")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
 		
 			  out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		  out.println("<html>");
@@ -86,6 +90,7 @@ public class PrikazKorAdmin extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 			out.flush();
+			}
 	}
 
 	/**

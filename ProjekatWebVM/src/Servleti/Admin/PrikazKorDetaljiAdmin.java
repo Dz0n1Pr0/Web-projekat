@@ -34,7 +34,11 @@ public class PrikazKorDetaljiAdmin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
-			
+		if(!k.korisnik.getUloga().equals("admin")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{	
+		
 		    out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		    out.println("<html>");
 		  	out.println("<head>");
@@ -64,7 +68,7 @@ public class PrikazKorDetaljiAdmin extends HttpServlet {
 			out.println(" 		<input type=\"hidden\" name=\"emailStaro\" value=\""+k.korisnici.get(request.getParameter("email")).getEmail()+"\"");
 			out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.korisnici.get(request.getParameter("email")).getIme()+"\"/>");
 			out.println("		<p>Prezime: </p><input type=\"text\" name=\"prezime\" value=\""+k.korisnici.get(request.getParameter("email")).getPrezime()+"\"/>");
-			out.println("		<p>Password: </p><input type=\"text\" name=\"pass\" value=\""+k.korisnici.get(request.getParameter("email")).getPass()+"\"/>");
+			out.println("		<p>Password: </p><input type=\"password\" name=\"pass\" value=\""+k.korisnici.get(request.getParameter("email")).getPass()+"\"/>");
 			out.println("<p>Tip korisnika:</p><select name=\"uloga\">");
 				out.println("			<option value=\"admin\">Admin</option>");
 				out.println("			<option value=\"user\">Korisnik</option>");
@@ -77,6 +81,7 @@ public class PrikazKorDetaljiAdmin extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 			out.flush();
+		}
 	}
 
 	/**

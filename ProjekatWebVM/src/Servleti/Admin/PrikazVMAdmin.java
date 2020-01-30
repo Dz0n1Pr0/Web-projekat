@@ -38,6 +38,11 @@ public class PrikazVMAdmin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
+		if(!k.korisnik.getUloga().equals("admin")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
+		
 		if(!(""+ request.getParameter("ime")).equals("null")){
 			
 			ArrayList<Virtualna_masina> temp = new ArrayList<Virtualna_masina>();
@@ -207,6 +212,7 @@ public class PrikazVMAdmin extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 			out.flush();
+		}
 		}
 	}
 

@@ -37,6 +37,11 @@ public class PrikazDiskKorisnik extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
+		if(!k.korisnik.getUloga().equals("user")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
+		
 		if(!(""+ request.getParameter("ime")).equals("null")){
 			
 			ArrayList<Disk> temp = new ArrayList<Disk>();
@@ -188,6 +193,7 @@ public class PrikazDiskKorisnik extends HttpServlet {
 			out.flush();
 
 		}
+			}
 	}
 
 	/**

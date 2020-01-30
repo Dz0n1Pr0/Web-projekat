@@ -38,6 +38,12 @@ public class DodajKorSuperKraj extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
+
+		if(!k.korisnik.getUloga().equals("super")){
+			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+			response.sendRedirect(k.putanja + "Login.jsp");
+			}else{
+		
 		Boolean passed = true, emailBul = true, imeBul = true, prezimeBul = true, passBul = true;
 
 		if(request.getParameter("ime").equals("")){
@@ -76,57 +82,12 @@ public class DodajKorSuperKraj extends HttpServlet {
 			k.organizacije.get(request.getParameter("org")).getKorisnici().add(kor.getEmail());
 			k.UpisFajl();
 		
-			 out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
-			  out.println("<html>");
-			  out.println("<head>");
-			  out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
-			  out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
-				out.println("<title>Insert title here</title>");
-				out.println("</head>");
-				out.println("<body>");
-				out.println("<div class=\"center\">");
-				out.println("<div class=\"glava\">");
-				out.println("	<p>Ime: "+k.korisnik.getIme()+"</p>");
-				out.println("	<p>Prezime: "+k.korisnik.getPrezime()+"</p>");
-				out.println("	<p>Email: "+k.korisnik.getEmail()+"</p>");
-				out.println("	<br>");
-				out.println("</div>");
-				out.println("<div class=\"linkoviA\">");
-				out.println("	<a href=PrikazOrg>Prikazi organizacije</a>");
-				out.println("	<a href=PrikazKorSuper>Prikazi korisnike</a>");
-				out.println("	<a href=PrikazVMSuper>Prikazi VM</a>");
-				out.println("	<a href=PrikazDiskSuper>Prikazi Diskove</a>");
-				out.println("	<a href=PrikazKat>Prikazi Kategorije</a>");
-
-				out.println("	<a href=Logout>Log out</a>");
-				out.println("</div>");
-				out.println("<div class=\"ostalo\">");
-				
-				out.println("	<table>");
-				
-				out.println("		<tr>");
-				out.println("			<th>Ime</th>");
-				out.println("			<th>Prezime</th>");
-				out.println("			<th>Email</th>");
-				out.println("			<th>Organizacija</th>");
-				out.println("		</tr>");
-									for(Korisnik korisnik : k.korisnici.values()){
-										
-				out.println("		<tr>");
-				out.println("			<td><a href=PrikazKorDetaljiSuper?email=" +korisnik.getEmail()+">" + korisnik.getIme() + "</a></td>");
-				out.println("			<td>" + korisnik.getPrezime() +  " </td>");
-				out.println("			<td>" + korisnik.getEmail() +  " </td>");
-				out.println("			<td>" + korisnik.getOrganizacija() +  " </td>");
-				out.println("		</tr>");
-									}
-				out.println("	</table>");
-				
-				out.println("	<a href=\"DodajKorSuper\">Dodaj Korisnika</a>");
-				out.println("</body>");
-				out.println("</html>");
-				out.flush();
-		
+			response.sendRedirect(k.putanja + "PrikazKorSuper");
+			
 		}else{
+
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			
 			
 		    out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
 		    out.println("<html>");
@@ -189,7 +150,7 @@ public class DodajKorSuperKraj extends HttpServlet {
 			out.flush();
 		}
 	}
-
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

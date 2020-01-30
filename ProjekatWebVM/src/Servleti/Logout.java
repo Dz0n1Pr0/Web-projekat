@@ -35,26 +35,7 @@ public class Logout extends HttpServlet {
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
 		k.setKorisnik(null);
-		 out.print("<html>");
-		  out.print("<head>");
-		  out.print("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">");
-		  out.print("<link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">");
-		  out.print("<title>Insert title here</title>");
-		  out.print("</head>");
-		  out.print("<body>");
-		  out.print("<div class=\"center\">");
-		  out.print("<div class=\"login\">");
-		  out.print("<form action=Glavna>");
-		  out.print("	<p>Username: </p><input type=\"text\" name=\"email\" />");
-		  out.print("	<p>Password: </p><input type=\"text\" name=\"pass\" /><br>");
-		  out.print("	<br>");
-		  out.print("	<input type=\"submit\" value=\"log in\" />");
-		  out.print("</form>");
-		  out.print("</div>");
-		  out.print("</div>");
-		  out.print("</body>");
-		  out.print("</html>");
-		  out.flush();
+		response.sendRedirect("http://localhost:8080/ProjekatWebVM/Login.jsp");
 	}
 
 	/**

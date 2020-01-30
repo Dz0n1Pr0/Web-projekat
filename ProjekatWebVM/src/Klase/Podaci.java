@@ -17,8 +17,11 @@ public class Podaci {
 	public HashMap<String,Organizacija> organizacije = new HashMap<String,Organizacija>();
 	public HashMap<String,Virtualna_masina> virtualne_masine = new HashMap<String,Virtualna_masina>();
 	public HashMap<String,Aktivnost> aktivnosti = new HashMap<String,Aktivnost>();
+	
 	public Korisnik korisnik = new Korisnik();
 	public String admin="";
+	public String putanja = "http://localhost:8080/ProjekatWebVM/";
+	
 	public Podaci(HashMap<String, Korisnik> korisnici, HashMap<String, Disk> diskovi,
 			HashMap<String, Kategorija> kategorije, HashMap<String, Organizacija> organizacije,
 			HashMap<String, Virtualna_masina> virtualne_masine, Korisnik korisnik, String admin) {
