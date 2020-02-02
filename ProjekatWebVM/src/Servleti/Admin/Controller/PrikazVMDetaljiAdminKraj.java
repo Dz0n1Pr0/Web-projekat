@@ -40,9 +40,9 @@ public class PrikazVMDetaljiAdminKraj extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
-		if(!k.korisnik.getUloga().equals("admin")){
+		if(!k.admin.equals("admin") || !k.korisnik.getUloga().equals("admin")){
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			response.sendRedirect(k.putanja + "Login.jsp");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}else{
 		
 		Boolean pass = true, imeBul = true;

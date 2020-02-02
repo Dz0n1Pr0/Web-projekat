@@ -35,6 +35,7 @@ public class Logout extends HttpServlet {
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
 		k.setKorisnik(null);
+		k.setAdmin("");
 		response.sendRedirect("http://localhost:8080/ProjekatWebVM/Login.jsp");
 	}
 

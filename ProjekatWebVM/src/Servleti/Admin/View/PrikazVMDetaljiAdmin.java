@@ -38,9 +38,9 @@ public class PrikazVMDetaljiAdmin extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
-		if(!k.korisnik.getUloga().equals("admin")){
+		if(!k.admin.equals("admin") || !k.korisnik.getUloga().equals("admin")){
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			response.sendRedirect(k.putanja + "Login.jsp");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}else{
 
 		out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">");
@@ -67,7 +67,7 @@ public class PrikazVMDetaljiAdmin extends HttpServlet {
 		out.println("	<a href=MesecniRacun>Mesecni racun</a>");
 		out.println("	<a href=Logout>Log out</a>");
 		out.println("</div>");
-		out.println("<div class=\"ostalo\">");
+		out.println("<div class=\"ostalo2\">");
 		out.println("	<form action=PrikazVMDetaljiAdminKraj>");
 		out.println(" 		<input type=\"hidden\" name=\"imeStaro\" value=\""+k.virtualne_masine.get(request.getParameter("ime")).getIme()+"\"");
 		out.println("		<p>Ime: </p><input type=\"text\" name=\"ime\" value=\""+k.virtualne_masine.get(request.getParameter("ime")).getIme()+"\"/>");

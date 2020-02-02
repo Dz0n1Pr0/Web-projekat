@@ -39,9 +39,9 @@ public class DodajDiskSuperKraj extends HttpServlet {
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
 
-		if(!k.korisnik.getUloga().equals("super")){
+		if(!k.admin.equals("super") || !k.korisnik.getUloga().equals("super")){
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			response.sendRedirect(k.putanja + "Login.jsp");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}else{
 		
 		Boolean passed = true, kapBul = true, imeBul = true, virtBul = true;

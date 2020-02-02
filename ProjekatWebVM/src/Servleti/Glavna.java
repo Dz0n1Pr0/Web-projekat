@@ -49,15 +49,16 @@ public class Glavna extends HttpServlet {
 		  }else{
 			  k.setKorisnik(korisnik);
 			  if(korisnik.getUloga().equals("user")){
+				  k.setAdmin("user");
 			response.sendRedirect(k.putanja + "PrikazVMKorisnik");
 				
 			  }else if(korisnik.getUloga().equals("admin")){
-				  
+				  k.setAdmin("admin");
 
 					response.sendRedirect(k.putanja + "PrikazVMAdmin");
 			  }else{
-
-
+				  k.setAdmin("super");
+				  	
 					response.sendRedirect(k.putanja + "PrikazVMSuper");
 			  }
 		  }

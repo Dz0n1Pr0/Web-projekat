@@ -37,9 +37,9 @@ public class ObrisiKorSuper extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
-		if(!k.korisnik.getUloga().equals("super")){
+		if(!k.admin.equals("super") || !k.korisnik.getUloga().equals("super")){
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			response.sendRedirect(k.putanja + "Login.jsp");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}else{
 		
 		k.organizacije.get(k.getKorisnici().get(request.getParameter("email")).getOrganizacija()).getKorisnici().remove(request.getParameter("email"));

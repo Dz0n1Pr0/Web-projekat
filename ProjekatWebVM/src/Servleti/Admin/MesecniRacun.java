@@ -48,9 +48,9 @@ public class MesecniRacun extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Klase.Podaci k = (Klase.Podaci)getServletContext().getAttribute("podaci");
 		
-		if(!k.korisnik.getUloga().equals("admin")){
+		if(!k.admin.equals("admin") || !k.korisnik.getUloga().equals("admin")){
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			response.sendRedirect(k.putanja + "Login.jsp");
+			request.getRequestDispatcher("Login.jsp").forward(request, response);
 			}else{
 		
 		
@@ -66,48 +66,60 @@ public class MesecniRacun extends HttpServlet {
 			try {
 				
 				Date datumOd = fmt.parse(request.getParameter("datumOd"));
-				System.out.println(datumOd + " -- " + request.getParameter("datumOd"));
 				Date datumDo = fmt.parse(request.getParameter("datumDo"));
-				System.out.println(datumDo + " -- " + request.getParameter("datumDo"));
+				
+				Date current = new Date();
+				if(datumDo.after(current)){
+					datumDo = current;
+				}
 			
 			fmt = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			for(Virtualna_masina vm : k.virtualne_masine.values()){
 
-			if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(vm.getIme())){
-				
-				for(int i = 1; i<vm.getAktivnosti().size();i+=2){
+				if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(vm.getIme())){
 					
-				Date akt = fmt.parse(k.aktivnosti.get(vm.getAktivnosti().get(i)).getDate());
-				Date akt2 = datumDo;
-				if(i+1<vm.getAktivnosti().size()){
-				akt2 = fmt.parse(k.aktivnosti.get(vm.getAktivnosti().get(i+1)).getDate());
-				}
-				
-				if(akt.after(datumOd) && akt.before(datumDo)){
-					long diff;
-					if(akt2.before(datumDo)){
-						diff = (akt2.getTime()-akt.getTime())/(60*60 * 1000);
+					for(int i = 1; i<vm.getAktivnosti().size();i+=2){
 						
-					}else{
-
-						diff = (datumDo.getTime()-akt.getTime())/(60*60 * 1000);
+						Date akt = fmt.parse(k.aktivnosti.get(vm.getAktivnosti().get(i)).getDate());
 						
+						if(akt.before(datumOd)){
+							akt = datumOd;
+						}
+						
+						Date akt2 = datumDo;
+						if(i+1<vm.getAktivnosti().size()){
+						akt2 = fmt.parse(k.aktivnosti.get(vm.getAktivnosti().get(i+1)).getDate());
+						}
+						
+						if(akt2.after(datumOd) && akt.before(datumDo)){
+							long diff;
+							if(akt2.before(datumDo)){
+								diff = (akt2.getTime()-akt.getTime())/(60*60 * 1000);
+								
+							}else{
+		
+								diff = (datumDo.getTime()-akt.getTime())/(60*60 * 1000);
+								
+							}
+							
+							temp.add(vm);
+							double VM = diff*(25*vm.getBroj_jezgara() + 15*vm.getRam() + 1*vm.getGpu_jezgra());
+							tempCena.add(VM);
+							konacno += VM;
+							
+						}
+					
 					}
 					
-					temp.add(vm);
-					double VM = diff*(25*vm.getBroj_jezgara() + 15*vm.getRam() + 1*vm.getGpu_jezgra());
-					tempCena.add(VM);
-					konacno += VM;
-					
 				}
-				
-				}
-				
-			}
 			}
 			
 			for(Disk dk : k.diskovi.values()){
 				if(k.organizacije.get(k.korisnik.getOrganizacija()).getResursi().contains(dk.getIme())){
+					
+					if(datumDo.after(current)){
+						datumDo = current;
+					}
 					
 				long diff = (datumDo.getTime()-datumOd.getTime())/(60*60 * 1000);
 				double disk;
@@ -155,7 +167,6 @@ public class MesecniRacun extends HttpServlet {
 				out.println("	<a href=Logout>Log out</a>");
 				out.println("</div>");
 				out.println("<div class=\"ostalo\">");
-				
 				out.println("	<table>");
 				
 				out.println("		<tr>");
@@ -166,7 +177,7 @@ public class MesecniRacun extends HttpServlet {
 									for(int i =0; i<temp.size();i++){
 				out.println("		<tr>");
 				out.println("			<td>"+temp.get(i).getIme()+"</td>");
-				out.println("			<td>" + tempCena.get(i) +  " </td>");;
+				out.println("			<td>" + tempCena.get(i) +  "$ </td>");;
 				out.println("		</tr>");
 									}
 			
@@ -174,13 +185,13 @@ public class MesecniRacun extends HttpServlet {
 									for(int i =0; i<temp2.size();i++){
 				out.println("		<tr>");
 				out.println("			<td>"+temp2.get(i).getIme()+"</td>");
-				out.println("			<td>" + temp2Cena.get(i) +  " </td>");;
+				out.println("			<td>" + temp2Cena.get(i) +  "$ </td>");;
 				out.println("		</tr>");
 									}
 									
 				out.println("		<tr>");
 				out.println("			<td>Konacna cena</td>");
-				out.println("			<td>"+konacno+"</td>");
+				out.println("			<td>"+konacno+"$</td>");
 				out.println("		</tr>");
 				out.println("	</table>");
 
